@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxBox2d.h"
+#include "ofSerialThread.h"
 
 class ofApp : public ofBaseApp{
 
@@ -9,6 +10,7 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
+		void exit();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -24,5 +26,17 @@ class ofApp : public ofBaseApp{
 		
 		ofxBox2d box2d;
 		vector <shared_ptr<ofxBox2dCircle>> circles;
+		vector <int> circle_colors;
 		int iGravityAngle;
+		ofSoundPlayer sound1, sound2, sound3;
+		
+		ofFbo fbo;
+
+		ofSerialThread thread;
+		bool bThread;
+
+		bool bSWStatus;
+		bool bAccStatus;
+		bool bEncRotate;
+		int iPrevEncCount;
 };
